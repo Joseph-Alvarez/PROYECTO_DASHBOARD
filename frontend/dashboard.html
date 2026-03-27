@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard Ventas</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <ul class="list-unstyled">
+
+        <!-- Inicio -->
+        <li>
+          <a class="btn btn-toggle align-items-center" data-bs-toggle="collapse" href="#menuInicio" role="button"
+            aria-expanded="false" aria-controls="menuDashboard">
+            <i class="bi bi-house-door"></i>
+            Inicio
+          </a>
+        </li>
+
+        <!-- Dashboard -->
+        <li>
+          <a class="btn btn-toggle align-items-center" data-bs-toggle="collapse" href="#menuDashboard" role="button"
+            aria-expanded="false" aria-controls="menuDashboard">
+            <i class="bi bi-speedometer2"></i>
+            Dashboard
+          </a>
+          <div class="collapse" id="menuDashboard">
+            <ul class="list-unstyled ps-3">
+              <li><a href="#">General</a></li>
+              <li><a href="#">Ejecutivo</a></li>
+              <li><a href="#">Monitoreo</a></li>
+              <li><a href="#">Preventivos</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <!--Soporte -->
+        <li>
+          <a class="btn btn-toggle align-items-center" data-bs-toggle="collapse" href="#menuSoporte" role="button"
+            aria-expanded="false" aria-controls="menuSoporte">
+            <i class="bi bi-gear"></i>
+            Soporte
+          </a>
+          <div class="collapse" id="menuSoporte">
+            <ul class="list-unstyled ps-3">
+              <li><a href="#">Tickets</a></li>
+              <li><a href="#">Historial</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <!-- Ubicaciones -->
+        <li>
+          <a class="btn btn-toggle align-items-center" data-bs-toggle="collapse" href="#menuUbicaciones" role="button"
+            aria-expanded="false" aria-controls="menuSoporte">
+            <i class="bi bi-geo-alt"></i> Ubicaciones
+          </a>
+          <div class="collapse" id="menuUbicaciones">
+            <ul class="list-unstyled ps-3">
+              <li><a href="#">Ubicacion 1</a></li>
+              <li><a href="#">Ubicacion 2</a></li>
+              <li><a href="#">Ubicacion 3</a></li>
+              <li><a href="#">Ubicacion 4</a></li>
+              <li><a href="#">Ubicacion 5</a></li>
+              <li><a href="#">Ubicacion 6</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <!-- Inventarios -->
+        <li>
+          <a class="btn btn-toggle align-items-center" data-bs-toggle="collapse" href="#menuInventario" role="button"
+            aria-expanded="false" aria-controls="menuSoporte">
+            <i class="bi bi-boxes"></i> Inventarios
+          </a>
+          <div class="collapse" id="menuInventario">
+            <ul class="list-unstyled ps-3">
+              <li><a href="#">Inventario 1</a></li>
+              <li><a href="#">Inventario 2</a></li>
+              <li><a href="#">Inventario 3</a></li>
+              <li><a href="#">Inventario 4</a></li>
+              <li><a href="#">Inventario 5</a></li>
+              <li><a href="#">Inventario 6</a></li>
+            </ul>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+
+    <!-- Main -->
+    <main class="main">
+
+      <!-- Top bar -->
+      <div class="topbar">
+        <h1>Panel de Control</h1>
+      </div>
+
+      <!-- Cards -->
+      <div class="cards">
+        <div class="card">
+          <h3>Ingresos</h3>
+          <p>$24,870</p>
+        </div>
+
+        <div class="card">
+          <h3>Usuarios</h3>
+          <p>18,942</p>
+        </div>
+
+        <div class="card">
+          <h3>Conversión</h3>
+          <p>4.8%</p>
+        </div>
+
+        <div class="card">
+          <h3>Tiempo Promedio</h3>
+          <p>3m 42s</p>
+        </div>
+      </div>
+
+      <!-- Chart -->
+      <div class="chart-container">
+        <canvas id="salesChart"></canvas>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+  <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

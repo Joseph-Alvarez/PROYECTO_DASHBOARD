@@ -1,0 +1,209 @@
+<!--============================================================
+//  frontend/assets/register.html
+//  Pagina para Registrar un Usuario
+// ============================================================-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Cuenta</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/frontend/assets/css/regis.css">
+</head>
+
+<body>
+
+    <div class="scene">
+        <div class="card">
+
+            <!-- LEFT PANEL -->
+            <div class="panel-left">
+                <div class="blob blob-1"></div>
+                <div class="blob blob-2"></div>
+                <div class="left-content">
+                    <div class="id-card">
+                        <div class="id-avatar">
+                            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="20" cy="14" r="7" stroke="#2EE8A0" stroke-width="1.8" />
+                                <path d="M6 36c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="#2EE8A0"
+                                    stroke-width="1.8" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                        <div class="id-lines">
+                            <span></span><span></span><span class="short"></span>
+                        </div>
+                    </div>
+                    <div class="sparkle s1">+</div>
+                    <div class="sparkle s2">+</div>
+                    <div class="sparkle s3">✦</div>
+                </div>
+            </div>
+
+            <!-- RIGHT PANEL -->
+            <div class="panel-right">
+
+                <form id="formRegistro">
+
+                    <div class="form-head">
+                        <h2>Crear Cuenta</h2>
+                        <p>Regístrate para comenzar</p>
+                    </div>
+
+                    <!-- Primer Nombre -->
+                    <div class="field">
+                        <label for="primerNombre">Primer Nombre</label>
+                        <div class="input-wrap">
+                            <svg class="input-icon" viewBox="0 0 20 20" fill="none">
+                                <circle cx="10" cy="7" r="3.5" stroke="currentColor" stroke-width="1.4" />
+                                <path d="M3 18c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="currentColor" stroke-width="1.4"
+                                    stroke-linecap="round" />
+                            </svg>
+                            <input id="primerNombre" type="text" placeholder="Juan" required autocomplete="off">
+                        </div>
+                    </div>
+
+                    <!-- Segundo Nombre -->
+                    <div class="field">
+                        <label for="segundoNombre">Segundo Nombre</label>
+                        <div class="input-wrap">
+                            <svg class="input-icon" viewBox="0 0 20 20" fill="none">
+                                <circle cx="10" cy="7" r="3.5" stroke="currentColor" stroke-width="1.4" />
+                                <path d="M3 18c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="currentColor" stroke-width="1.4"
+                                    stroke-linecap="round" />
+                            </svg>
+                            <input id="segundoNombre" type="text" placeholder="Carlos" autocomplete="off">
+                        </div>
+                    </div>
+
+                    <!-- Primer Apellido -->
+                    <div class="field">
+                        <label for="primerApellido">Primer Apellido</label>
+                        <div class="input-wrap">
+                            <svg class="input-icon" viewBox="0 0 20 20" fill="none">
+                                <circle cx="10" cy="7" r="3.5" stroke="currentColor" stroke-width="1.4" />
+                                <path d="M3 18c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="currentColor" stroke-width="1.4"
+                                    stroke-linecap="round" />
+                            </svg>
+                            <input id="primerApellido" type="text" placeholder="Pérez" required autocomplete="off">
+                        </div>
+                    </div>
+
+                    <!-- Segundo Apellido -->
+                    <div class="field">
+                        <label for="segundoApellido">Segundo Apellido</label>
+                        <div class="input-wrap">
+                            <svg class="input-icon" viewBox="0 0 20 20" fill="none">
+                                <circle cx="10" cy="7" r="3.5" stroke="currentColor" stroke-width="1.4" />
+                                <path d="M3 18c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="currentColor" stroke-width="1.4"
+                                    stroke-linecap="round" />
+                            </svg>
+                            <input id="segundoApellido" type="text" placeholder="López" autocomplete="off">
+                        </div>
+                    </div>
+
+                    <!-- Correo -->
+                    <div class="field">
+                        <label for="correo">Correo electrónico</label>
+                        <div class="input-wrap">
+                            <svg class="input-icon" viewBox="0 0 20 20" fill="none">
+                                <rect x="2" y="5" width="16" height="12" rx="2" stroke="currentColor"
+                                    stroke-width="1.4" />
+                                <path d="M2 8l8 5 8-5" stroke="currentColor" stroke-width="1.4"
+                                    stroke-linecap="round" />
+                            </svg>
+                            <input id="correo" type="email" placeholder="usuario@correo.com" required
+                                autocomplete="off">
+                        </div>
+                    </div>
+
+                    <!-- Contraseña -->
+                    <div class="field">
+                        <label for="contrasena">Contraseña</label>
+                        <div class="input-wrap">
+                            <svg class="input-icon" viewBox="0 0 20 20" fill="none">
+                                <rect x="4" y="9" width="12" height="9" rx="2" stroke="currentColor"
+                                    stroke-width="1.4" />
+                                <path d="M7 9V6a3 3 0 016 0v3" stroke="currentColor" stroke-width="1.4"
+                                    stroke-linecap="round" />
+                            </svg>
+                            <input id="contrasena" type="password" placeholder="••••••••" required>
+                            <button class="toggle-eye" type="button" onclick="togglePass('contrasena', this)"
+                                aria-label="Ver contraseña">
+                                <svg viewBox="0 0 20 20" fill="none" class="eye-icon">
+                                    <path d="M1 10s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z" stroke="currentColor"
+                                        stroke-width="1.4" />
+                                    <circle cx="10" cy="10" r="2.5" stroke="currentColor" stroke-width="1.4" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="strength-bar" id="strengthBar">
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+                        <p class="strength-label" id="strengthLabel"></p>
+                    </div>
+
+                    <!-- Confirmar Contraseña -->
+                    <div class="field">
+                        <label for="confirmar">Confirmar contraseña</label>
+                        <div class="input-wrap">
+                            <svg class="input-icon" viewBox="0 0 20 20" fill="none">
+                                <rect x="4" y="9" width="12" height="9" rx="2" stroke="currentColor"
+                                    stroke-width="1.4" />
+                                <path d="M7 9V6a3 3 0 016 0v3" stroke="currentColor" stroke-width="1.4"
+                                    stroke-linecap="round" />
+                            </svg>
+                            <input id="confirmar" type="password" placeholder="••••••••" required>
+                            <button class="toggle-eye" type="button" onclick="togglePass('confirmar', this)"
+                                aria-label="Ver contraseña">
+                                <svg viewBox="0 0 20 20" fill="none" class="eye-icon">
+                                    <path d="M1 10s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z" stroke="currentColor"
+                                        stroke-width="1.4" />
+                                    <circle cx="10" cy="10" r="2.5" stroke="currentColor" stroke-width="1.4" />
+                                </svg>
+                            </button>
+                        </div>
+                        <span class="field-error" id="errorPass">Las contraseñas no coinciden</span>
+                    </div>
+
+                    <!-- Términos -->
+                    <label class="checkbox-wrap">
+                        <input type="checkbox" id="terms">
+                        <span class="checkbox-custom"></span>
+                        <span class="checkbox-label">Acepto los <a href="#">términos y condiciones</a></span>
+                    </label>
+
+                    <div id="msgError" style="display:none; color:#f87171; font-size:.85rem; margin-bottom:.5rem;">
+                    </div>
+                    <div id="msgExito" style="display:none; color:#34d399; font-size:.85rem; margin-bottom:.5rem;">
+                    </div>
+
+                    <!-- Botón -->
+                    <button class="btn-submit" id="btnRegistro" type="submit">
+                        <span>Registrarme</span>
+                        <svg viewBox="0 0 20 20" fill="none">
+                            <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.6"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+
+                    <!-- Login link -->
+                    <p class="login-link">
+                        ¿Ya tienes cuenta? <a href="index.html">Inicia sesión</a>
+                    </p>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="/frontend/assets/js/register.js"></script>
+
+</body>
+
+</html>

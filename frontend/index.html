@@ -1,0 +1,115 @@
+<!--// ============================================================
+//  frontend/assets/index.html
+//  Pagina de Iniciar Sesion
+// ============================================================-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <!--<link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />-->
+    <link rel="stylesheet" href="assets/css/dashboard.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+    <canvas id="bg"></canvas>
+
+    <header>
+        <div class="scene">
+
+            <div class="card">
+
+                <!-- LEFT -->
+                <div class="panel-left">
+                    <!--<div class="hex-grid"></div>-->
+                    <div class="orb orb-1"></div>
+                    <div class="orb orb-2"></div>
+                    <div class="brand">
+                        <div id="animation"></div>
+                        <!--<div class="brand-dot"></div>-->
+                    </div>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="panel-right">
+                    <div class="form-head">
+                        <h2>Iniciar Sesión</h2>
+                        <p>Ingresa tus credenciales para continuar</p>
+                    </div>
+
+                    <form id="loginForm" asp-controller="Home" asp-action="Index" method="post" novalidate>
+
+                        <div class="field">
+                            <label for="email">Correo electrónico</label>
+                            <div class="input-wrap">
+                                <input type="email" id="email" name="Email" placeholder="usuario@correo.com"
+                                    autocomplete="email" />
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="2" y="4" width="20" height="16" rx="3" />
+                                    <path d="M2 7l10 7 10-7" />
+                                </svg>
+                            </div>
+                            <span class="field-error" id="emailErr">Por favor ingresa un correo válido.</span>
+                        </div>
+
+                        <div class="field">
+                            <label for="password">Contraseña</label>
+                            <div class="input-wrap">
+                                <input type="password" id="password" name="Password" placeholder="••••••••"
+                                    autocomplete="current-password" />
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" />
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                </svg>
+                                <button type="button" class="toggle-pw" id="togglePw" aria-label="Mostrar contraseña">
+                                    <svg id="eyeIcon" viewBox="0 0 24 24" fill="none" stroke-width="1.8"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" />
+                                        <circle cx="12" cy="12" r="3" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <span class="field-error" id="pwErr">La contraseña es requerida.</span>
+                        </div>
+
+                        <div class="row-opt">
+                            <label class="check-label">
+                                <input type="checkbox" name="RememberMe" />
+                                <span class="check-box"></span>
+                                Recordarme
+                            </label>
+                            <a href="#" class="forgot">¿Olvidaste tu contraseña?</a>
+                        </div>
+
+                        <form id="loginForm" action="/api/login" method="post" novalidate>
+                            <button type="submit" class="btn-submit" id="submitBtn">
+                                Ingresar
+                            </button>
+                        </form>
+
+                        <p class="register-link">
+                            ¿No tienes cuenta?
+                            <a href="/frontend/register.html" class="btn btn-primary">
+                                Regístrate aquí
+                            </a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+
+    <!--<script src="/lib/jquery/dist/jquery.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+    <!--<script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>-->
+    <script src="assets/js/charts.js"></script>
+</body>
+
+</html>

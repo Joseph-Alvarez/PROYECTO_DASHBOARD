@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/frontend/assets/css/styles2.css" asp-append-version="true" />
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="nav-logo">EMPRESA</div>
+        <div class="nav-links">
+            <a href="#" class="active">Inicio</a>
+        </div>
+        <div class="nav-right">
+            <div class="nav-user">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <circle cx="12" cy="8" r="4" />
+                    <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+                </svg>
+                usuario.nuevo
+            </div>
+            <form asp-controller="Account" asp-action="Logout" method="post">
+                <button type="submit" class="btn-logout">
+                    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 1 1 2-2h4" />
+                        <polyline points="16 17 21 12 16 7" />
+                        <line x1="21" y1="12" x2="9" y2="12" />
+                    </svg>
+                    Cerrar Sesión
+                </button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb-bar">
+        <div class="page-title">Areas <span>Perfiles</span></div>
+        <div class="breadcrumb">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+            </svg>
+            <a href="#">Inicio</a><span class="sep">›</span>
+            <a href="#">Home</a><span class="sep">›</span>
+            Areas
+        </div>
+    </div>
+
+    <!-- MAIN -->
+    <main>
+        <div class="greeting">
+            <span>🌅</span> Buenos días, Usuario
+        </div>
+
+        <div class="cards-grid">
+
+            <!-- ATM's -->
+            <a asp-controller="Home" asp-action="SidebarADM" class="area-card card-red" style="text-decoration: none;">
+                <div>
+                    <div class="card-icon">DC</div>
+                    <div class="card-title">Nueva</div>
+                    <div class="card-sub">Mantenimiento de ABC</div>
+                </div>
+                <div class="card-footer">
+                    <div class="card-action">Ir →</div>
+                </div>
+            </a>
+
+            <!-- Operaciones -->
+            <div class="area-card card-green">
+                <div>
+                    <div class="card-icon">⚙️</div>
+                    <div class="card-title">Operaciones</div>
+                    <div class="card-sub">Gerencia de Administración</div>
+                </div>
+                <div class="card-footer">
+                    <span class="lock-icon">🔒</span>
+                </div>
+            </div>
+
+            <!-- Canales -->
+            <div class="area-card card-orange">
+                <div>
+                    <div class="card-icon">📡</div>
+                    <div class="card-title">Canales</div>
+                    <div class="card-sub">Gerencia de Canales Digitales</div>
+                </div>
+                <div class="card-footer">
+                    <span class="lock-icon">🔒</span>
+                </div>
+            </div>
+
+            <!-- Agencias -->
+            <div class="area-card card-crimson">
+                <div>
+                    <div class="card-icon">🏢</div>
+                    <div class="card-title">Agencias</div>
+                    <div class="card-sub">Gerencia de Canales Digitales</div>
+                </div>
+                <div class="card-footer">
+                    <span class="lock-icon">🔒</span>
+                </div>
+            </div>
+
+            <!-- Seguridad Física -->
+            <div class="area-card card-coral">
+                <div>
+                    <div class="card-icon">🛡️</div>
+                    <div class="card-title">Seguridad Física</div>
+                    <div class="card-sub">Técnicos de Monitoreo</div>
+                </div>
+                <div class="card-footer">
+                    <span class="lock-icon">🔒</span>
+                </div>
+            </div>
+
+            <!-- Contact Center -->
+            <div class="area-card card-blue">
+                <div>
+                    <div class="card-icon">🎧</div>
+                    <div class="card-title">Contact Center</div>
+                    <div class="card-sub">Relaciones</div>
+                </div>
+                <div class="card-footer">
+                    <span class="lock-icon">🔒</span>
+                </div>
+            </div>
+
+            <!-- Nueva -->
+            <div class="area-card card-nue">
+                <div>
+                    <div class="card-icon">🎧</div>
+                    <div class="card-title">Contact Center</div>
+                    <div class="card-sub">Relaciones</div>
+                </div>
+                <div class="card-footer">
+                    <span class="lock-icon">🔒</span>
+                </div>
+            </div>
+
+            <!-- Nueva -->
+            <div class="area-card card-nuev">
+                <div>
+                    <div class="card-icon">🎧</div>
+                    <div class="card-title">Contact Center</div>
+                    <div class="card-sub">Relaciones</div>
+                </div>
+                <div class="card-footer">
+                    <span class="lock-icon">🔒</span>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            Copyright &copy; 2026
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+# Archivos de entorno
+.env
+
+# Node.js
+node_modules/
+pnpm-lock.yaml
