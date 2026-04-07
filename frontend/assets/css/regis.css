@@ -68,7 +68,7 @@ body {
 
 /* ─── Panel izquierdo ────────────────────────────────── */
 .panel-left {
-    width: 300px;
+    width: 350px;
     min-width: 300px;
     background: linear-gradient(150deg, #0f2920 0%, #0c1c28 60%, #071520 100%);
     position: relative;

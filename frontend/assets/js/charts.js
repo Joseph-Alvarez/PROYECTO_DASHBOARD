@@ -52,6 +52,21 @@
     if (btn) btn.addEventListener('click', () => { vis = !vis; inp.type = vis ? 'text' : 'password'; icon.innerHTML = vis ? eyeClosed : eyeOpen; });
 })();
 
+/* ── TOGGLE PASSWORD (campos con onclick) ── */
+function togglePass(inputId, btn) {
+    const inp = document.getElementById(inputId);
+    const icon = btn.querySelector('.eye-icon');
+
+    const eyeOpen = `<path d="M1 10s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z" stroke="currentColor" stroke-width="1.4"/><circle cx="10" cy="10" r="2.5" stroke="currentColor" stroke-width="1.4"/>`;
+    const eyeClosed = `<path d="M14.12 14.12A4.5 4.5 0 0 1 5.88 5.88M1 1l18 18M8.59 8.59A3 3 0 0 0 10 13.5a3 3 0 0 0 3-3 3 3 0 0 0-.41-1.5M1 10s3.5-6 9-6c1.5 0 2.9.37 4.12 1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>`;
+
+    const isVisible = inp.type === 'text';
+    inp.type = isVisible ? 'password' : 'text';
+    icon.innerHTML = isVisible ? eyeOpen : eyeClosed;
+}
+
+
+
 /* ── RIPPLE ── */
 const submitBtn = document.getElementById('submitBtn');
 if (submitBtn) {
@@ -98,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 document.getElementById("loginForm").addEventListener("submit", async function (e) {
-    e.preventDefault(); // evita que el navegador recargue la página
+    e.preventDefault();
 
     const correo = document.getElementById("email").value;
     const contrasena = document.getElementById("password").value;
@@ -113,13 +128,22 @@ document.getElementById("loginForm").addEventListener("submit", async function (
         const data = await response.json();
 
         if (data.ok) {
-            // ✅ Redirigir si login es correcto
+
+            // ✅ GUARDAR NOMBRE
+            localStorage.setItem("nombreUsuario", data.usuario.nombre);
+
+            // ✅ REDIRIGIR
             window.location.href = "/frontend/indexHome.html";
+
         } else {
             alert(data.mensaje);
         }
+
     } catch (err) {
         console.error("Error en login:", err);
         alert("Error de conexión con el servidor.");
     }
+
+    const data = await response.json();
+    console.log("Respuesta del backend:", data);
 });

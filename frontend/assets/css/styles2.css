@@ -7,8 +7,8 @@
 }
 
 :root {
-    --red: #c0392b;
-    --red-dark: #96281b;
+    --blue: #140d41;
+    --blue-dark: #160b5d;
     --nav-h: 56px;
 }
 
@@ -21,7 +21,7 @@ body {
 /* ── NAVBAR ── */
 nav {
     height: var(--nav-h);
-    background: var(--red);
+    background: var(--blue);
     display: flex;
     align-items: center;
     padding: 0 24px;
@@ -64,8 +64,9 @@ nav {
 
 .nav-links a:hover,
 .nav-links a.active {
-    background: rgba(255, 255, 255, .18);
+    background: transparent;
     color: #fff;
+    font-weight: 600;
 }
 
 .nav-right {
@@ -351,11 +352,6 @@ main {
     background: linear-gradient(135deg, #6eea22, #1a5276);
 }
 
-#animation {
-    position: relative;
-    width: 500px;
-    top: 60px;
-}
 
 .sidebar {
     position: fixed;
@@ -399,4 +395,12 @@ main {
     left: 18%;
     top: 95%;
     font-weight: 600;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    margin-top: 24%;
+    border-top: 1px solid #ccc;
+    color: #666;
 }

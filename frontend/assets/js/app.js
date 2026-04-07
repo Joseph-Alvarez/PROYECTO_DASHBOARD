@@ -1,94 +1,129 @@
-const ctx = document.getElementById('salesChart');
+document.addEventListener("DOMContentLoaded", () => {
 
-new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
-    datasets: [{
-      label: 'Ventas ($)',
-      data: [1200, 1900, 3000, 2500, 3200, 4000, 3800],
-      borderWidth: 2,
-      tension: 0.4
-    }]
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        labels: {
-          color: "white"
-        }
-      }
-    },
-    scales: {
-      x: {
-        ticks: {
-          color: "white"
-        }
-      },
-      y: {
-        ticks: {
-          color: "white"
-        }
-      }
+  /* ── Sidebar accordion ── */
+  function toggleSub(btn, id) {
+    const sub = document.getElementById(id);
+    const isOpen = sub.classList.contains('open');
+
+    document.querySelectorAll('.nav-sub.open').forEach(s => s.classList.remove('open'));
+    document.querySelectorAll('.nav-item.open').forEach(b => b.classList.remove('open'));
+
+    if (!isOpen) {
+      sub.classList.add('open');
+      btn.classList.add('open');
     }
   }
-});
+  window.toggleSub = toggleSub;
 
+  /* ── Chart.js ── */
+  const ctx = document.getElementById('salesChart');
 
-/* Toggle visibilidad contraseña */
-function togglePass(id, btn) {
-  const input = document.getElementById(id);
-  const isText = input.type === 'text';
-  input.type = isText ? 'password' : 'text';
-  btn.style.color = isText ? '' : 'var(--accent)';
-}
+  if (ctx) {
+    const gradient = ctx.getContext('2d').createLinearGradient(0, 0, 0, 220);
+    gradient.addColorStop(0, 'rgba(56,189,248,0.25)');
+    gradient.addColorStop(1, 'rgba(56,189,248,0)');
 
-/* Fuerza de contraseña */
-document.getElementById('password').addEventListener('input', function () {
-  const v = this.value;
-  const bar = document.getElementById('strengthBar');
-  const lbl = document.getElementById('strengthLabel');
-  const spans = bar.querySelectorAll('span');
-  let score = 0;
-  if (v.length >= 8) score++;
-  if (/[A-Z]/.test(v)) score++;
-  if (/[0-9]/.test(v)) score++;
-  if (/[^A-Za-z0-9]/.test(v)) score++;
-  const colors = ['#ef4444', '#f97316', '#eab308', '#2EE8A0'];
-  const labels = ['Muy débil', 'Débil', 'Moderada', 'Fuerte'];
-  spans.forEach((s, i) => {
-    s.style.background = i < score ? colors[score - 1] : 'var(--border)';
-  });
-  lbl.textContent = v.length ? labels[score - 1] || '' : '';
-  lbl.style.color = v.length ? colors[score - 1] : '';
-});
-
-/* Validación */
-function validarRegistro() {
-  const pass = document.getElementById('password').value;
-  const conf = document.getElementById('confirmPassword').value;
-  const err = document.getElementById('errorPass');
-  if (pass !== conf) {
-    err.classList.add('visible');
-    document.getElementById('confirmPassword').closest('.input-wrap').classList.add('error');
-  } else {
-    err.classList.remove('visible');
-    document.getElementById('confirmPassword').closest('.input-wrap').classList.remove('error');
-    alert('¡Registro exitoso!');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+        datasets: [{
+          label: 'Ventas ($)',
+          data: [12000, 19000, 15000, 22000, 18000, 24870],
+          borderColor: '#38bdf8',
+          backgroundColor: gradient,
+          tension: 0.45,
+          fill: true,
+          pointRadius: 4,
+          pointBackgroundColor: '#38bdf8',
+          pointBorderColor: '#0d1117',
+          pointBorderWidth: 2,
+          pointHoverRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: '#1c2330',
+            borderColor: '#21303f',
+            borderWidth: 1,
+            titleColor: '#a8bfd0',
+            bodyColor: '#e2e8f0',
+            padding: 10,
+            callbacks: {
+              label: ctx => ' $' + ctx.parsed.y.toLocaleString()
+            }
+          }
+        },
+        scales: {
+          x: {
+            ticks: { color: '#475569', font: { size: 11 } },
+            grid: { color: 'rgba(33,48,63,0.6)' }
+          },
+          y: {
+            ticks: {
+              color: '#475569',
+              font: { size: 11 },
+              callback: v => '$' + (v / 1000).toFixed(0) + 'k'
+            },
+            grid: { color: 'rgba(33,48,63,0.6)' }
+          }
+        }
+      }
+    });
   }
-}
 
-/* ── RIPPLE ── */
-const submitBtn = document.getElementById('submitBtn');
-if (submitBtn) {
-  submitBtn.addEventListener('click', function (e) {
-    const r = document.createElement('span');
-    const d = Math.max(this.offsetWidth, this.offsetHeight);
-    const rect = this.getBoundingClientRect();
-    r.className = 'ripple';
-    r.style.cssText = `width:${d}px;height:${d}px;left:${e.clientX - rect.left - d / 2}px;top:${e.clientY - rect.top - d / 2}px`;
-    this.appendChild(r);
-    setTimeout(() => r.remove(), 500);
+  /* ── Pills ── */
+  document.querySelectorAll('.pill').forEach(p => {
+    p.addEventListener('click', () => {
+      document.querySelectorAll('.pill').forEach(x => x.classList.remove('active'));
+      p.classList.add('active');
+    });
   });
-}
+
+  /* ── Botón Cerrar Sesión ── */
+  const btnCerrar = document.getElementById("btnCerrar");
+  if (btnCerrar) {
+    btnCerrar.addEventListener("click", () => {
+      localStorage.clear();
+      sessionStorage.clear();
+      window.location.href = "index.html";
+    });
+  }
+
+  /* ── Nombre de usuario y saludo automático ── */
+  const nombre = localStorage.getItem("nombreUsuario") || "Usuario";
+
+  // Mostrar nombre en nav (ID) y en saludo (clase)
+  const spanNav = document.getElementById("nombreUsuario");
+  if (spanNav) spanNav.textContent = nombre;
+
+  document.querySelectorAll(".nombreUsuario").forEach(el => {
+    el.textContent = nombre;
+  });
+
+  // Saludo según hora
+  const hora = new Date().getHours();
+  let saludo, icono;
+
+  if (hora >= 5 && hora < 12) {
+    saludo = "Buenos días,";
+    icono = "🌅";
+  } else if (hora >= 12 && hora < 19) {
+    saludo = "Buenas tardes,";
+    icono = "☀️";
+  } else {
+    saludo = "Buenas noches,";
+    icono = "🌙";
+  }
+
+  const textoSaludo = document.getElementById("textoSaludo");
+  const iconoSaludo = document.getElementById("iconoSaludo");
+
+  if (textoSaludo) textoSaludo.textContent = saludo;
+  if (iconoSaludo) iconoSaludo.textContent = icono;
+
+});
