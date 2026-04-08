@@ -614,3 +614,27 @@
     width: 130px;
     margin-left: 14px;
   }
+
+
+  .greeting {
+    position: relative;
+    top: 50px;
+    left: 10%;
+    width: 250%;
+    background: #333360;
+    border-radius: 15px;
+    padding: 16px 22px;
+    margin-bottom: 58px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #2c3e50;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .07);
+    border-left: 4px solid;
+  }
+
+  .greeting span {
+    font-size: 20px;
+  }

@@ -127,3 +127,11 @@ document.addEventListener("DOMContentLoaded", () => {
   if (iconoSaludo) iconoSaludo.textContent = icono;
 
 });
+
+
+/////parte para Utilizarel menu-Principal/////
+fetch("/frontend/components/sidebar.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("sidebar").innerHTML = data;
+  });
