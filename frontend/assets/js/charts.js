@@ -1,6 +1,9 @@
-/* ── ANIMATED PARTICLE BACKGROUND ── */
+// frontend/assets/js/charts.js
+
+/* ── ANIMACION PARTICULAS ── */
 (function () {
     const c = document.getElementById('bg');
+    if (!c) return;
     const ctx = c.getContext('2d');
     let W, H, pts;
 
@@ -41,6 +44,8 @@
     init(); draw();
 })();
 
+
+
 /* ── TOGGLE PASSWORD ── */
 (function () {
     const btn = document.getElementById('togglePw');
@@ -51,6 +56,8 @@
     let vis = false;
     if (btn) btn.addEventListener('click', () => { vis = !vis; inp.type = vis ? 'text' : 'password'; icon.innerHTML = vis ? eyeClosed : eyeOpen; });
 })();
+
+
 
 /* ── TOGGLE PASSWORD (campos con onclick) ── */
 function togglePass(inputId, btn) {
@@ -81,6 +88,7 @@ if (submitBtn) {
     });
 }
 
+
 /* ── VALIDATION ── */
 const loginForm = document.getElementById('loginForm');
 if (loginForm) {
@@ -100,7 +108,7 @@ if (loginForm) {
     });
 }
 
-
+// ANIMACION
 document.addEventListener("DOMContentLoaded", function () {
     var animation = lottie.loadAnimation({
         container: document.getElementById("animation"),
@@ -112,7 +120,9 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-document.getElementById("loginForm").addEventListener("submit", async function (e) {
+
+const _loginForm = document.getElementById("loginForm");
+if (_loginForm) _loginForm.addEventListener("submit", async function (e) {
     e.preventDefault();
 
     const correo = document.getElementById("email").value;
@@ -129,10 +139,8 @@ document.getElementById("loginForm").addEventListener("submit", async function (
 
         if (data.ok) {
 
-            // ✅ GUARDAR NOMBRE
             localStorage.setItem("nombreUsuario", data.usuario.nombre);
 
-            // ✅ REDIRIGIR
             window.location.href = "/frontend/indexHome.html";
 
         } else {
@@ -143,7 +151,4 @@ document.getElementById("loginForm").addEventListener("submit", async function (
         console.error("Error en login:", err);
         alert("Error de conexión con el servidor.");
     }
-
-    const data = await response.json();
-    console.log("Respuesta del backend:", data);
 });

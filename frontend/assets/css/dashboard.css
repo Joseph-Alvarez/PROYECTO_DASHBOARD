@@ -111,7 +111,7 @@ canvas#bg {
     justify-content: flex-end;
     padding: 3rem;
     overflow: hidden;
-    width: 80%;
+    width: 81%;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
 }
@@ -169,6 +169,7 @@ canvas#bg {
 .brand {
     position: relative;
     z-index: 1;
+    bottom: 25%;
 }
 
 .brand-dot {
