@@ -10,21 +10,32 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ── Rutas API ── //
+// API
 app.use('/api', require('./routes/auth'));
 app.use('/api/productos', require('./routes/productos'));
 
-// ── Servir frontend ── //
-// Archivos estáticos (CSS, JS, imágenes, etc.)
-app.use(express.static(path.join(__dirname, '../frontend')));
+// Ruta correcta al frontend
+const frontendPath = path.join(__dirname, '../frontend');
 
-// Ruta raíz: devuelve index.html del frontend
+// Servir archivos estáticos
+app.use(express.static(frontendPath));
+
+// Ruta principal
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/index.html'));
+    res.sendFile(path.join(frontendPath, 'index.html'));
 });
 
-// ── Arrancar servidor ── //
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+// Para páginas HTML adicionales
+app.get('/register', (req, res) => {
+    res.sendFile(path.join(frontendPath, 'register.html'));
+});
+
+app.get('/home', (req, res) => {
+    res.sendFile(path.join(frontendPath, 'indexHome.html'));
+});
+
+const PORT = process.env.PORT || 10000;
+
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Servidor corriendo en puerto ${PORT}`);
 });
