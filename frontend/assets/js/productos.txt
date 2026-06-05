@@ -1,0 +1,39 @@
+// frontend/assets/js/productos.js
+
+// Guardar producto
+async function guardarProducto() {
+    const id = document.getElementById("productoId").value;
+    const data = {
+        NombreProducto: document.getElementById("nombre").value,
+        Precio: document.getElementById("precio").value,
+        Categoria: document.getElementById("categoria").value,
+        Stock: document.getElementById("stock").value,
+    };
+
+    if (id) {
+        await fetch(`${API_URL}/${id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+    } else {
+        await fetch(API_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+    }
+
+    mostrarProductos();
+    bootstrap.Modal.getInstance(document.getElementById("modalProducto")).hide();
+}
+
+
+// Eliminar producto
+async function eliminarProducto(id) {
+    await fetch(`${API_URL}/${id}`, { method: "DELETE" });
+    mostrarProductos();
+}
+
+// Cargar productos al iniciar
+document.addEventListener("DOMContentLoaded", mostrarProductos);

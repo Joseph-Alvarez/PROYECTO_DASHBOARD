@@ -1,20 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ── Sidebar accordion ── */
-  function toggleSub(btn, id) {
-    const sub = document.getElementById(id);
-    const isOpen = sub.classList.contains('open');
-
-    document.querySelectorAll('.nav-sub.open').forEach(s => s.classList.remove('open'));
-    document.querySelectorAll('.nav-item.open').forEach(b => b.classList.remove('open'));
-
-    if (!isOpen) {
-      sub.classList.add('open');
-      btn.classList.add('open');
-    }
-  }
-  window.toggleSub = toggleSub;
-
   /* ── Chart.js ── */
   const ctx = document.getElementById('salesChart');
 
@@ -84,28 +69,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  /* ── Botón Cerrar Sesión ── */
-  const btnCerrar = document.getElementById("btnCerrar");
-  if (btnCerrar) {
-    btnCerrar.addEventListener("click", () => {
-      localStorage.clear();
-      sessionStorage.clear();
-      window.location.href = "index.html";
-    });
+  /* ── Sidebar accordion ── */
+  function toggleSub(btn, id) {
+    const sub = document.getElementById(id);
+    const isOpen = sub.classList.contains('open');
+
+    document.querySelectorAll('.nav-sub.open').forEach(s => s.classList.remove('open'));
+    document.querySelectorAll('.nav-item.open').forEach(b => b.classList.remove('open'));
+
+    if (!isOpen) {
+      sub.classList.add('open');
+      btn.classList.add('open');
+    }
   }
+  window.toggleSub = toggleSub;
 
-  /* ── Nombre de usuario y saludo automático ── */
-  const nombre = localStorage.getItem("nombreUsuario") || "Usuario";
 
-  // Mostrar nombre en nav (ID) y en saludo (clase)
-  const spanNav = document.getElementById("nombreUsuario");
-  if (spanNav) spanNav.textContent = nombre;
-
-  document.querySelectorAll(".nombreUsuario").forEach(el => {
-    el.textContent = nombre;
-  });
-
-  // Saludo según hora
+  /* ── Saludo según hora ── */
   const hora = new Date().getHours();
   let saludo, icono;
 
@@ -127,3 +107,77 @@ document.addEventListener("DOMContentLoaded", () => {
   if (iconoSaludo) iconoSaludo.textContent = icono;
 
 });
+
+
+/* ──CARGA DE COMPONENTES ── */
+
+// Navbar
+if (document.getElementById('navbar')) {
+  fetch("/frontend/components/navbar.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("navbar").innerHTML = data;
+
+      const nombre = localStorage.getItem("nombreUsuario") || "Usuario";
+
+      // Botón cerrar sesión
+      const btnCerrar = document.getElementById("btnCerrar");
+      if (btnCerrar) {
+        btnCerrar.addEventListener("click", () => {
+          localStorage.clear();
+          sessionStorage.clear();
+          window.location.href = "/frontend/index.html";
+        });
+      }
+
+      // Nombre en el navbar
+      document.querySelectorAll("#navbar .nombreUsuario").forEach(el => {
+        el.textContent = nombre;
+      });
+
+      //Nombre en el saludo
+      document.querySelectorAll(".nombreUsuario").forEach(el => {
+        el.textContent = nombre;
+      });
+    });
+}
+
+// Sidebar
+if (document.getElementById('sidebar')) {
+  fetch("/frontend/components/sidebar.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("sidebar").innerHTML = data;
+
+      const nombre = localStorage.getItem("nombreUsuario") || "Usuario";
+      const rol = localStorage.getItem("rolUsuario") || "Sin rol";
+
+      console.log("Rol en localStorage:", rol);
+
+      // Nombre
+      document.querySelectorAll("#sidebar .nombreUsuario").forEach(el => {
+        el.textContent = nombre;
+      });
+
+      // Rol
+      const userRole = document.querySelector("#sidebar .user-role");
+      console.log("Elemento .user-role encontrado:", userRole);
+      if (userRole) userRole.textContent = rol;
+
+      // Iniciales en el avatar
+      const avatar = document.querySelector("#sidebar .avatar");
+      if (avatar) {
+        const partes = nombre.trim().split(" ");
+        const iniciales = partes.length >= 2
+          ? partes[0][0] + partes[1][0]
+          : partes[0][0];
+        avatar.textContent = iniciales.toUpperCase();
+      }
+
+      // Mueve el .main dentro del .layout
+      const layout = document.querySelector('.layout');
+      const main = document.querySelector('.main') || document.querySelector('#main2') || document.querySelector('main');
+      if (layout && main) layout.appendChild(main);
+    });
+}
+
