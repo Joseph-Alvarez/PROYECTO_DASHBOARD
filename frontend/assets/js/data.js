@@ -36,7 +36,7 @@ function badgeCategoria(cat) {
     return `<span class="badge-cat ${clave}">${cat}</span>`;
 }
 
-// Recibe la lista completa (o filtrada) y reinicia a página 1
+
 function renderizarTabla(productos) {
     productosVisibles = productos;
     paginaActual = 1;
@@ -188,7 +188,7 @@ function limpiarBusqueda() {
     renderizarTabla(todosLosProductos);
 }
 
-// ─── Modal / CRUD ─────────────────────────────────────────────────────────────
+// ─── Modal / CRUD ───//
 async function abrirModal(id = null) {
     const modal = new bootstrap.Modal(document.getElementById("modalProducto"));
     document.getElementById("formProducto").reset();
@@ -205,7 +205,7 @@ async function abrirModal(id = null) {
     modal.show();
 }
 
-// En data.js, busca esta función y reemplázala:
+
 async function guardarProducto() {
     const id = document.getElementById("productoId").value;
     const data = {

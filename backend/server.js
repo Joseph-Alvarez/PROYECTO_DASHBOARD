@@ -11,9 +11,11 @@ app.use(express.json());
 
 
 
-// ── Rutas ──────────────────────────────
+// ── Rutas ── //
 app.use('/api', require('./routes/auth'));
 app.use('/api/productos', require('./routes/productos'));
+
+
 
 app.listen(process.env.PORT || 3000, () => {
     console.log(`Servidor corriendo en http://localhost:${process.env.PORT || 3000}`);

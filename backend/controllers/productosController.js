@@ -3,6 +3,8 @@
 const mssql = require('mssql');
 const { getPool } = require('../config/db');
 
+
+
 const getAll = async (req, res) => {
     try {
         const db = await getPool();
@@ -62,7 +64,6 @@ const create = async (req, res) => {
 const update = async (req, res) => {
     const { NombreProducto, Precio, Categoria, Stock } = req.body;
 
-    // Agregar estas validaciones que faltan:
     if (!NombreProducto || NombreProducto.trim() === "")
         return res.status(400).json({ ok: false, mensaje: "Nombre requerido." });
     if (!Precio || Number(Precio) <= 0)

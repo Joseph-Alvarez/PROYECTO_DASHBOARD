@@ -53,6 +53,7 @@ const login = async (req, res) => {
     }
 };
 
+
 const registro = async (req, res) => {
     const { primerNombre, segundoNombre, primerApellido, segundoApellido, correo, contrasena } = req.body;
 

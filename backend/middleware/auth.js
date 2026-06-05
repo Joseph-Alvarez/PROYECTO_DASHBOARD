@@ -7,8 +7,8 @@ function verificarToken(req, res, next) {
         return res.status(401).json({ ok: false, mensaje: 'Acceso denegado. Token requerido.' });
     }
 
-    // Por ahora verificacion simple, en produccion usarias JWT
-    if (token !== 'mi-token-secreto') {
+
+    if (token !== 'token1234') {
         return res.status(403).json({ ok: false, mensaje: 'Token invalido.' });
     }
 
@@ -16,3 +16,8 @@ function verificarToken(req, res, next) {
 }
 
 module.exports = verificarToken;
+
+
+
+
+

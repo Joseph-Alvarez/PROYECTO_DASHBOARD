@@ -15,7 +15,7 @@ const sqlConfig = {
     },
 };
 
-// Conexión única reutilizable ─── //
+// ─── Conexión reutilizable ─── //
 let pool;
 async function getPool() {
     if (!pool) pool = await mssql.connect(sqlConfig);
