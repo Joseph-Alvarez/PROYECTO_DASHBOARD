@@ -4,8 +4,16 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const fs = require('fs');
 
 const app = express();
+
+// DEBUG
+const frontendPath = path.join(__dirname, '../frontend');
+console.log('__dirname:', __dirname);
+console.log('frontendPath:', frontendPath);
+console.log('Existe?', fs.existsSync(frontendPath));
+console.log('Archivos:', fs.existsSync(frontendPath) ? fs.readdirSync(frontendPath) : 'CARPETA NO EXISTE');
 
 app.use(cors());
 app.use(express.json());
@@ -14,18 +22,14 @@ app.use(express.json());
 app.use('/api', require('./routes/auth'));
 app.use('/api/productos', require('./routes/productos'));
 
-// Ruta correcta al frontend
-const frontendPath = path.join(__dirname, '../frontend');
-
 // Servir archivos estáticos
 app.use(express.static(frontendPath));
 
-// Ruta principal
+// Rutas
 app.get('/', (req, res) => {
     res.sendFile(path.join(frontendPath, 'index.html'));
 });
 
-// Para páginas HTML adicionales
 app.get('/register', (req, res) => {
     res.sendFile(path.join(frontendPath, 'register.html'));
 });
